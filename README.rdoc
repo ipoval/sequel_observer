@@ -1,0 +1,15 @@
+== Description
+Welcome to "Sequel::Observer".
+The "Sequel::Observer" provides a separate class to create the Observers for callbacks in models of Sequel ORM.
+
+== Creating Observers
+For example, imagine a User model where we want to send an email every time a new user is created.
+Because sending emails is not directly related to our model’s purpose, we could create an observer to contain this functionality.
+```ruby
+class UserObserver < Sequel::Observer
+  def after_create(model_instance_record)
+    # code to send confirmation email...
+  end
+end
+```
+The observer’s methods receive the instance of the model that caused the callback to fire as a parameter.
