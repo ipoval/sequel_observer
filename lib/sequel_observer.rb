@@ -1,21 +1,9 @@
+#!/usr/local/bin/ruby -w
+# coding: utf-8
+
+require 'sequel_observer/filter'
+
 unless defined? Sequel::Observer
-
-##
-# class Filter
-#
-class Filter
-  def initialize
-    @constraints = []
-  end
-
-  def constraint(&block)
-    @constraints << block
-  end
-
-  def to_proc
-    lambda {|e| @constraints.all? {|fn| fn.call(e)}}
-  end
-end
 
 ##
 # class Sequel::Observer
@@ -41,7 +29,7 @@ class Sequel::Observer
     end
   end
 
-  def self.register(observer)
+  def self.register(observer) # :nodoc:
     @@observers_pool[observer].observing_hooks.each do |call_back_method|
       observer.observing_klass.class_eval do
         define_method(call_back_method.intern) do
@@ -53,22 +41,22 @@ class Sequel::Observer
     nil
   end
 
-  def self.find_observer(observing_klass_name)
+  def self.find_observer(observing_klass_name) # :nodoc:
     @@observers_pool[observing_klass_name]
   end
 
   # Instance methods
 
-  def observing_klass_name
+  def observing_klass_name # :nodoc:
     @observing_klass_name ||= self.class.to_s[/\A(.+)Observer\z/, 1]
   end
 
-  def observing_klass
+  def observing_klass # :nodoc:
     # @observing_klass ||= ObjectSpace.class_eval(observing_klass_name)
     @observing_klass ||= observing_klass_name.classify.constantize
   end
 
-  def hooks
+  def hooks # :nodoc:
     @hooks ||= %W(before_validation after_validation
                   before_save       after_save
                   before_update     after_update
@@ -76,7 +64,7 @@ class Sequel::Observer
                   before_destroy    after_destroy)
   end
 
-  def observing_hooks
+  def observing_hooks # :nodoc:
     filter = ::Filter.new
     filter.constraint {|x| self.hooks.include?(x)}
     self.methods.grep(/^(after|before)_/).select(&filter)
