@@ -1,5 +1,4 @@
-== Description
-Welcome to "Sequel::Observer".
+== "Sequel::Observer"
 
 The "Sequel::Observer" provides an easy (ActiveRecord-like) way to create the Observers for callbacks in the models of Sequel ORM.
 
@@ -20,9 +19,9 @@ Because sending emails is not directly related to our model’s purpose, we coul
 
 The observer’s methods receive the instance of the model that caused the callback to fire as a parameter.
 
-= Installing Sequel::Observer
+== Installing Sequel::Observer
 RubyGems is the preferred easy install method for Sequel::Observer.
-== Installing the Gem
+=== Installing the Gem
 $ sudo gem install sequel_observer
 
 == ?s (&& ||) #s
