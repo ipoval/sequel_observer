@@ -19,11 +19,11 @@ Because sending emails is not directly related to our model’s purpose, we coul
 
 The observer’s methods receive the instance of the model that caused the callback to fire as a parameter.
 
-== Installing Sequel::Observer
-RubyGems is the preferred easy install method for Sequel::Observer.
+== Installing "Sequel::Observer"
+RubyGems is the preferred easy to install method for "Sequel::Observer".
 === Installing the Gem
 $ sudo gem install sequel_observer
 
-== ?s (&& ||) #s
-Feel free to email {Ivan Povalyukhin}[mailto:ipoval@ya.ru] or
-tweet @ivanpovalyukhin
+== ?s
+e: {Ivan Povalyukhin}[mailto:ipoval@ya.ru]
+t: @ipoval
