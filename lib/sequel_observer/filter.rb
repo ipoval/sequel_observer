@@ -8,6 +8,6 @@ class Filter #:nodoc:
   end
 
   def to_proc
-    lambda {|e| @constraints.all? {|fn| fn.call(e)}}
+    lambda { |e| @constraints.all? { |fn| fn.call(e) } }
   end
 end

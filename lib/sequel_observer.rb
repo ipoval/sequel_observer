@@ -1,5 +1,6 @@
-#!/usr/local/bin/ruby -w
-# coding: utf-8
+#!/usr/bin/env ruby -w
+
+# encoding: utf-8
 
 require 'sequel_observer/filter'
 
@@ -66,7 +67,7 @@ class Sequel::Observer
 
   def observing_hooks # :nodoc:
     filter = ::Filter.new
-    filter.constraint {|x| self.hooks.include?(x)}
+    filter.constraint { |x| self.hooks.include?(x) }
     self.methods.grep(/^(after|before)_/).select(&filter)
   end
 
