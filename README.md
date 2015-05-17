@@ -22,5 +22,5 @@ $ sudo gem install sequel_observer
 ```
 
 #### ?s
-e: {ipoval@ya.ru}[mailto:ipoval@ya.ru]
+e: ipoval@ya.ru
 t: @ipoval
